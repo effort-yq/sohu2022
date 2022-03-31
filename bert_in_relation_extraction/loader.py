@@ -61,24 +61,6 @@ def prepare_data():
             dump_f.write(a)
             dump_f.write("\n")
 
-
-# prepare_data()
-
-
-# def map_id_rel():
-#     rel = ["UNK"]
-#     with open("train.json", 'r', encoding='utf-8') as load_f:
-#         for line in load_f.readlines():
-#             dic = json.loads(line)
-#             if dic['rel'] not in rel:
-#                 rel.append(dic['rel'])
-#     id2rel={}
-#     rel2id={}
-#     for i in range(len(rel)):
-#         id2rel[i]=rel[i]
-#         rel2id[rel[i]]=i
-#     return rel2id,id2rel
-
 def map_id_rel():
     id2rel = {'-2': '极负向', '-1': '负向', '0': '中立', '1': '正向', '2': '极正向'}
     rel2id = {}
@@ -98,7 +80,6 @@ def load_train():
 
     with open("../nlp_data/train_hand.json", 'r', encoding='utf-8') as load_f:
         temp = json.load(load_f)
-        temp = temp[:200]
         for dic in temp:
             # dic = json.loads(line)
             spo_list = dic['spo_list']
@@ -137,7 +118,6 @@ def load_dev():
     with open("../nlp_data/dev_hand.json", 'r', encoding='utf-8') as load_f:
         data = json.load(load_f)
         for dic in data:
-            # dic = json.loads(line)
             spo_list = dic['spo_list']
             for item in spo_list:
                 if item[-1] not in rel2id:
