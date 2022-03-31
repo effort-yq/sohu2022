@@ -103,7 +103,7 @@ with open('../nlp_data/test.txt', 'r', encoding='utf-8') as f:
         id = line['id']
         entity_list = line['entity']
         for item in entity_list:
-            dic[item] = int(result.pop(0))
+            dic[item] = int(result.pop(0)-2)
         res.append([str(id) + '\t' + str(dic)])
 
 with open('section1.txt', 'w', encoding='utf-8') as g:
